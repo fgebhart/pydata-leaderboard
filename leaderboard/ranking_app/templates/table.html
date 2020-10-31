@@ -1,0 +1,7 @@
+    {% for entry in ranking %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ entry.user }}</td>
+        <td>{{ entry.score }}</td>
+    </tr>
+    {% endfor %}

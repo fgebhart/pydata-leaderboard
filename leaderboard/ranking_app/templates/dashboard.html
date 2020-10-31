@@ -1,0 +1,23 @@
+<title>PyData Bot Game Challenge - Dashboard</title>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <script src="{% static "intercoolerjs/js/jquery.js" %}"></script>
+    <script src="{% static "intercoolerjs/js/intercooler.min.js" %}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>User</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody ic-poll="2s" ic-src="/table" ic-trigger-on="load">
+        </tbody>
+    </table>
+</body>
