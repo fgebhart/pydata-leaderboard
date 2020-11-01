@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from ranking_app import models
+from ranking_app.models import Ranking
 from ranking_app.serializers import RankingSerializer
 
 
@@ -28,12 +29,18 @@ class TableView(View):
 
 @api_view(['POST'])
 def add_user_score(request):
-    """
-    List all code snippets, or create a new snippet.
-    """
     if request.method == 'POST':
         serializer = RankingSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            user_instance = Ranking.objects.get(user=request.data["user"])
+            if user_instance:   # user exists already
+                if int(request.data["score"]) > user_instance.score:    # new score is higher than score in db, updating
+                    user_instance.score = request.data['score']
+                    user_instance.save()
+                    return Response(serializer.data, status=status.HTTP_200_OK)
+                else:
+                    return Response(serializer.data, status=status.HTTP_208_ALREADY_REPORTED)
+            else:  # user does not exist already
+                serializer.create(request.data)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
