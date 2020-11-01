@@ -14,9 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from ranking_app.views import DashboardView, TableView
+from ranking_app.views import DashboardView, TableView, add_user_score
 
 urlpatterns = [
         path("", DashboardView.as_view(), name="leaderboard"),
         path("table", TableView.as_view(), name="table"),
+        path("add-user-score", add_user_score),
 ]

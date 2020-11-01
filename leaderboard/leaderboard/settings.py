@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ranking_app',
     'intercoolerjs',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
