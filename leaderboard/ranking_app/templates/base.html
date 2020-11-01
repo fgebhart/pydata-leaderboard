@@ -1,0 +1,30 @@
+<html lang="en">
+
+
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <script src="{% static "intercoolerjs/js/jquery.js" %}"></script>
+    <script src="{% static "intercoolerjs/js/intercooler.min.js" %}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<style>
+    body {
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    img {
+        border-radius: 50%;
+    }
+</style>
+
+<body>
+    <div id="main">
+        {% block body %}
+        // content will be here
+        {% endblock %}
+    </div>
+</body>
+</html>

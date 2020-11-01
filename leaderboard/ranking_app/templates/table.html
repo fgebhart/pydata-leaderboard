@@ -1,7 +1,15 @@
-    {% for entry in ranking %}
-    <tr>
-        <td>{{ forloop.counter }}</td>
-        <td>{{ entry.user }}</td>
-        <td>{{ entry.score }}</td>
-    </tr>
-    {% endfor %}
+{% load static %}
+{% for entry in ranking %}
+
+<tr>
+    <td>{{ forloop.counter }}</td>
+    <td>
+        <a href='https://github.com/{{ entry.user }}'>
+            <img src="https://github.com/{{ entry.user }}.png" width="30" height="30"
+                onerror=null;this.src="{% static '/img/unknown-avatar.jpg' %}" ;></a>
+        &nbsp;&nbsp; {{ entry.user }}
+    </td>
+    <td>{{ entry.score }}</td>
+    <td>{{ entry.updated }}</td>
+</tr>
+{% endfor %}
