@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import View
 
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 
 from ranking_app import models
 from ranking_app.models import Ranking
@@ -28,6 +29,7 @@ class TableView(View):
 
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def add_user_score(request):
     if request.method == 'POST':
         serializer = RankingSerializer(data=request.data)
