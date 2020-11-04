@@ -32,7 +32,7 @@ def add_user_score(request):
     if request.method == 'POST':
         serializer = RankingSerializer(data=request.data)
         if serializer.is_valid():
-            user_instance = Ranking.objects.get(user=request.data["user"])
+            user_instance = Ranking.objects.filter(user=request.data["user"]).first()
             if user_instance:   # user exists already
                 if int(request.data["score"]) > user_instance.score:    # new score is higher than score in db, updating
                     user_instance.score = request.data['score']
