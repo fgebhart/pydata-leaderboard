@@ -3,7 +3,14 @@ Leaderboard for the Bot Game Challenge of the PyDataGlobal 2020
 
 
 ## Deployment
-using docker ... TODO
+Build the docker image
+```bash
+docker build . -t pydata-leaderboard
+```
+Run the django app
+```bash
+docker run --rm  -it -p 8000:8000  -v $(pwd):/leaderboard pydata-leaderboard
+```
 
 
 ## Updating the Leaderboard

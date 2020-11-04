@@ -26,8 +26,7 @@ SECRET_KEY = 'i2p6$*86_!(r*cnap52+2eq++%4jwo+o@id%+-daly!nq_&i&z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
