@@ -36,12 +36,10 @@ def add_user_score(request):
         if serializer.is_valid():
             user_instance = Ranking.objects.filter(user=request.data["user"]).first()
             if user_instance:   # user exists already
-                if int(request.data["score"]) > user_instance.score:    # new score is higher than score in db, updating
-                    user_instance.score = request.data['score']
-                    user_instance.save()
-                    return Response(serializer.data, status=status.HTTP_200_OK)
-                else:
-                    return Response(serializer.data, status=status.HTTP_208_ALREADY_REPORTED)
+                # update the score of the user
+                user_instance.score = request.data['score']
+                user_instance.save()
+                return Response(serializer.data, status=status.HTTP_200_OK)
             else:  # user does not exist already
                 serializer.create(request.data)
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
