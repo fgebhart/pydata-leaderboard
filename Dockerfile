@@ -15,4 +15,4 @@ RUN /bin/bash -c 'source /tmp/venv/bin/activate && pip install -i $BY_DEV_INDEX 
 
 EXPOSE 8000
 
-CMD /tmp/venv/bin/python leaderboard/manage.py collectstatic --noinput ;  /tmp/venv/bin/python leaderboard/manage.py makemigrations ; /tmp/venv/bin/python leaderboard/manage.py migrate ; /tmp/venv/bin/python leaderboard/manage.py runserver 0.0.0.0:8000
+CMD /tmp/venv/bin/python manage.py collectstatic --noinput ;  /tmp/venv/bin/python manage.py makemigrations ; /tmp/venv/bin/python manage.py migrate ; /tmp/venv/bin/python manage.py runserver 0.0.0.0:8000
