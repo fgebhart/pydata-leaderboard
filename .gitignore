@@ -5,3 +5,4 @@ static/
 .vscode/
 .eggs/
 .pytest_cache
+stratosphere.json

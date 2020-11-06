@@ -1,7 +1,10 @@
+azure-identity
+azure-keyvault-secrets
 asgiref==3.2.10
 Django==3.1.2
 django-intercoolerjs==1.2.3.0
 djangorestframework==3.12.1
+psycopg2-binary==2.8.6
 pypandoc==1.5
 pytz==2020.1
 sqlparse==0.4.1

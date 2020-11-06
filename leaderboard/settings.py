@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
+import sys
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -78,8 +80,13 @@ WSGI_APPLICATION = 'leaderboard.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'pydata-bot-tournament',
+        'USER': os.environ["PSQL_USERNAME"],
+        'PASSWORD': os.environ["PSQL_PASSWORD"],
+        'HOST': 'oxykil88mluhdd0o678krkc9.postgres.database.azure.com',
+        'PORT': '5432',
+        'OPTIONS': {'sslmode': 'require'},
     }
 }
 
@@ -121,3 +128,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+if "runserver" in sys.argv:
+    from leaderboard.utils import create_user
+
+    # create initial user with access to api endpoint
+    create_user(username=os.environ['ENDPOINT_USERNAME'], password=os.environ['ENDPOINT_PASSWORD'])
