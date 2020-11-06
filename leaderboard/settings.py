@@ -78,17 +78,27 @@ WSGI_APPLICATION = 'leaderboard.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'pydata-bot-tournament',
-        'USER': os.environ["PSQL_USERNAME"],
-        'PASSWORD': os.environ["PSQL_PASSWORD"],
-        'HOST': 'oxykil88mluhdd0o678krkc9.postgres.database.azure.com',
-        'PORT': '5432',
-        'OPTIONS': {'sslmode': 'require'},
+if "tests" in sys.argv:
+    # use sqlite db for testing
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": "db.sqlite3",
+        }
     }
-}
+else:
+    # use postgres db for production
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'pydata-bot-tournament',
+            'USER': os.environ["PSQL_USERNAME"],
+            'PASSWORD': os.environ["PSQL_PASSWORD"],
+            'HOST': 'oxykil88mluhdd0o678krkc9.postgres.database.azure.com',
+            'PORT': '5432',
+            'OPTIONS': {'sslmode': 'require'},
+        }
+    }
 
 
 # Password validation
