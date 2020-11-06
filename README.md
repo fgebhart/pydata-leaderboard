@@ -14,7 +14,7 @@ docker build . -t pydata-leaderboard
 ```
 Run the django app:
 ```bash
-docker run --rm -it -p 8000:8000 -v $(pwd):/leaderboard pydata-leaderboard
+docker run --rm -it -p 8000:8000 pydata-leaderboard
 ```
 
 
