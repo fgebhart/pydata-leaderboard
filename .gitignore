@@ -3,3 +3,5 @@ db.sqlite3
 __pycache__/
 static/
 .vscode/
+.eggs/
+.pytest_cache
