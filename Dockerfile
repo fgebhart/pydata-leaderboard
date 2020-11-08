@@ -18,7 +18,7 @@ USER 1001
 WORKDIR /home/john
 
 # first copy only requirements files to only invalidate the next setps in case of changed requirements
-COPY requirements.txt /tmp/requirements.txt
+COPY requirements/requirements.txt /tmp/requirements.txt
 
 # install pip dependencies
 

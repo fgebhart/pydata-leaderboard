@@ -1,6 +1,8 @@
 import os
 import setuptools
-from leaderboard import __version__
+#this somehow doesn work, import error
+#from leaderboard import __version__
+__version__ = "0.0.1"
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
