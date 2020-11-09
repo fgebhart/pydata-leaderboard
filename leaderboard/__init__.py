@@ -1,1 +1,2 @@
-__version__ = "0.0.1"
+# this somehow doesn't work
+#__version__ = "0.0.1"
