@@ -121,3 +121,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# custom initial admin users
+ADMINS = [
+    {
+        'username': 'pydata-leaderboard-admin',
+        'email': 'some-dummy-email@mail.com',
+        'password': 'some-super-secure-dummy-password-to-be-replaced',
+    }
+]
