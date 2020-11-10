@@ -4,7 +4,7 @@ from ranking_app.models import Ranking
 
 class RankingSerializer(serializers.Serializer):
     user = serializers.CharField(required=True, max_length=100)
-    score = serializers.IntegerField()
+    score = serializers.FloatField()
 
     def create(self, validated_data):
         return Ranking.objects.create(**validated_data)
