@@ -167,11 +167,21 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# custom initial admin users
-ADMINS = [
-    {
-        'username': 'pydata-leaderboard-admin',
-        'email': 'some-dummy-email@mail.com',
-        'password': 'some-super-secure-dummy-password-to-be-replaced',
-    }
-]
+if deploy_env:
+    # prod and dev admin user
+    ADMINS = [
+        {
+            'username': 'pydata-leaderboard-admin',
+            'email': 'some-dummy-email@mail.com',
+            'password': client.get_secret("django-adminuser-pwd").value,
+        }
+    ]
+else:
+    # custom initial admin users
+    ADMINS = [
+        {
+            'username': 'pydata-leaderboard-admin',
+            'email': 'some-dummy-email@mail.com',
+            'password': 'some-super-secure-dummy-password-to-be-replaced',
+        }
+    ]
