@@ -6,7 +6,7 @@ from ranking_app import models
 def test_dashboard_view(db, client):
     response = client.get(reverse("leaderboard"))
     assert response.status_code == 200
-    assert "BlueYonder Beer Game" in response.content.decode("UTF-8")
+    assert "Supply Chain Bot Tournament" in response.content.decode("UTF-8")
 
 
 def test_table_view(db, client):
