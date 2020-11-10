@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
 import sys
 from pathlib import Path
 
@@ -24,7 +25,7 @@ STATIC_ROOT = Path(BASE_DIR, "static")
 SECRET_KEY = 'i2p6$*86_!(r*cnap52+2eq++%4jwo+o@id%+-daly!nq_&i&z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -78,7 +79,7 @@ WSGI_APPLICATION = 'leaderboard.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 azure_resource_name = "oxykil88mluhdd0o678krkc9"
 
-if "tests" in sys.argv:
+if "tests" in sys.argv or os.environ.get('DJANGO_ENV', None) == 'test':
     # use sqlite db for testing
     DATABASES = {
         "default": {
