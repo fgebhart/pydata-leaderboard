@@ -10,7 +10,7 @@ def test_dashboard_view(db, client):
 
 
 def test_table_view(db, client):
-    ranking = models.Ranking(user="Player1", score=123)
+    ranking = models.Ranking(user="Player1", score=123.45)
     ranking.save()
     response = client.get(reverse("table"))
     assert response.status_code == 200

@@ -24,7 +24,7 @@ class TableView(View):
 
     def get(self, request):
         # get ranking of users ordered by score descending
-        ranking = models.Ranking.objects.all().order_by("-score")
+        ranking = models.Ranking.objects.all().order_by("score")
         return render(request, template_name=self.template_name, context={"ranking": ranking})
 
 
