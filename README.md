@@ -1,5 +1,5 @@
 # PyData-Leaderboard
-Leaderboard for the Bot Game Challenge of the PyDataGlobal 2020
+Leaderboard for the Supply Chain Bot Tournament of the PyDataGlobal 2020
 
 
 ## Running the App
@@ -14,7 +14,7 @@ docker build . -t pydata-leaderboard
 ```
 Run the django app:
 ```bash
-docker run --rm -it -p 8000:8000 pydata-leaderboard
+docker run --rm -it -p 8080:8080 pydata-leaderboard
 ```
 
 
@@ -25,7 +25,7 @@ To add a new user to the leaderboard simply send a POST similar to the following
 ```bash
 curl --header "Content-Type: application/json" \
      --request POST \
-     --data '{"user":"player-name","score":1234}' \
+     --data '{"user":"player-name","score":1234.56}' \
      -u username:password \
      http://127.0.0.1:8000/add-user-score
 ```
