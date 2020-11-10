@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import sys
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -75,13 +76,29 @@ WSGI_APPLICATION = 'leaderboard.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+azure_resource_name = "oxykil88mluhdd0o678krkc9"
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if "tests" in sys.argv:
+    # use sqlite db for testing
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
     }
-}
+else:
+    # use postgres db for production
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': "leaderboard_dev",
+            'USER': f"leaderborduser_dev@{azure_resource_name}",
+            'PASSWORD': "w7H9P^QA%l#c",
+            'HOST': f"{azure_resource_name}.postgres.database.azure.com",
+            'PORT': '',
+            'OPTIONS': {'sslmode': 'require'},
+        }
+    }
 
 
 # Password validation
