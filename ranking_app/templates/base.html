@@ -18,13 +18,29 @@
     img {
         border-radius: 50%;
     }
+
+    .flex-wrapper {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+        justify-content: space-between
+    }
+    .heart{color:#e25555;}
 </style>
 
 <body>
-    <div id="main">
-        {% block body %}
-        // content will be here
-        {% endblock %}
+    <div class="flex-wrapper">
+        <div class="container">
+            {% block body %}
+            // content will be here
+            {% endblock %}
+        </div>
+        <div class="footer">
+            <br>
+            <br>
+            {% include "footer.html" %}
+        </div>
     </div>
 </body>
+
 </html>
